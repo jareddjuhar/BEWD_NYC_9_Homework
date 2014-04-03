@@ -36,3 +36,68 @@
 #
 ###############################################################################
 
+#Setting up the variables
+low_number = 1
+high_number = 100
+number = rand(low_number..high_number)
+guesses = 6
+guesses_left = guesses
+
+#Introduction
+puts "Welcome to Jared's secret number game! First, tell me your name."
+player_name = gets.strip.to_s
+
+puts "Hello #{player_name}! This is a game where you guess a number between #{low_number} and #{high_number}. Also, you will only have #{guesses} tries"
+
+
+#This will be the user's first guess
+puts "Ok. Now guess a number."
+guess = gets.to_i
+if guess>number
+	puts "Too high!"
+	elsif guess<number
+	puts "Too low!"
+    else 
+    puts "Wow #{player_name}! You've got the right number on your first try. You deserve a cookie."
+end
+if guess==number
+	exit
+    else
+	guesses_left-=1
+end
+
+#This will be the user's subsequent guesses. This will repeat until the user gets to 1 guess left.
+
+until guesses_left<2
+puts "Don't give up. You have #{guesses_left} guesses left. Guess another number"
+guess = gets.to_i
+
+if guess>number
+	puts "Too high!"
+	elsif guess<number
+	puts "Too low!"
+    else 
+    puts "Congratulations #{player_name}! You've guessed the right number."
+end
+
+if guess==number
+	exit
+    else
+	guesses_left -= 1
+end
+end
+
+#This will be the user's last guess. I didn't think it's necessary to say whether it's too high or too low because we're revealing the number anyway.
+
+puts "One last try"
+guess = gets.to_i
+if guess==number
+    puts "Congratulations #{player_name}! You've guessed the right number."
+	exit
+end
+
+#If the user did not guess correctly
+puts "Sorry #{player_name}. You've tried #{guesses} times! The number was actually #{number}."
+
+
+
