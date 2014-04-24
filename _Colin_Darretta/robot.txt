@@ -1,0 +1,19 @@
+Mr. Robot and E-Mail
+
+1 = on
+2 = off
+
+Mr. Robot sits at desk
+
+If computer != 2
+then (turn computer on)
+else
+Open google mail
+
+Process A
+	If unread email == 0
+	then stop
+	else
+	open email 1 & save data
+
+Iterate 'Process A' until unread email == 0

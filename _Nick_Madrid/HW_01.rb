@@ -1,3 +1,56 @@
+puts "Welcome to an awesome number guessing game that Nick Madrid created."
+
+puts "What is your name?"
+name = gets.strip
+puts "Hi #{name}!"
+
+puts "Before we get started let's review a few housekeeping items."
+puts "1. Your goal is to guess the number I have chosen. It's between 1 and 10."
+puts "2. You only have 3 guesses."
+puts "3. You get an awesome prize if you guess it."
+
+secret_number = 9
+#first guess
+puts "What is your first guess?"
+guess1 = gets.strip.to_i #convert value to integer
+
+if guess1 > secret_number
+		puts "Too high"
+elsif guess1 < secret_number
+		puts "Too Low"
+else 
+		puts "You guessed my number on the first try! You may exit the game."
+		exit #aborts the application with the correct guess
+end
+
+#second guess
+puts "You have two guesses left. What is your second guess?"
+guess2 = gets.strip.to_i #convert value to integer
+
+if guess2 > secret_number
+		puts "Too high"
+elsif guess2 < secret_number
+		puts "Too Low"
+else 
+		puts "You guessed my number on the secondy try! You may exit the game."
+		exit #aborts the application with the correct guess
+end
+
+#third and final guess
+puts "You have one left. What is your last guess?"
+guess3 = gets.strip.to_i #convert value to integer
+
+if guess3 > secret_number
+		puts "Too high"
+elsif guess3 < secret_number
+		puts "Too Low"
+else 
+		puts "You guessed my number on the third and final try! You may exit the game."
+		exit #aborts the application with the correct guess
+end
+
+puts "You didn't guess my number in three attempts. The number was 9 but I bet you were close."
+
 ###############################################################################
 #
 # Back-End Web Development - Homework #1

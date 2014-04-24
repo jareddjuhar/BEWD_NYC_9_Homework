@@ -1,38 +1,100 @@
-###############################################################################
-#
-# Back-End Web Development - Homework #1
-#
-# Secret Number is a game you will build in two parts.
-# The purpose of the game is to have players guess a secret number from 1-10.
-#
-# Read the instructions below.
-# This exercise will test your knowledge of Variables and Conditionals.
-#
-###############################################################################
-#
-# We're ready to program! To practice our Ruby skills lets create a secret number game. 
-# In this game players have three tries to guess a secret number between 1 and 10. 
-#
-# Here are some guidelines to building your game:
-#
-#	Intros
-# 	-	Welcome the player to your game. Let them know who created the game. 
-#	  -	Ask for the player's name then personally greet them by printing to the screen, "Hi player_name!"
-#	  -	Any good game will communicate the rules. Let the player know they must guess a number between 1 and 10 
-#		and that they only have 3 tries to do so.
-#
-#	Functionality: 
-#	 -	Hard code the secret number. Make it a random number between 1 and 10.
-#	 - 	Ask the user for their guess.
-#	 -	Verify if they were correct. If the player guesses correctly they win the game they should be congratulated and the game should end.
-#	 -	If they guess incorrectly, give the player some direction. If they guess too high let them know, if they guess too low, let them know.
-#	 - 	Don't forget to let your players know how many guesses they have left. Your game should say something like
-#		  "You have X many guesses before the game is over enter a another number"
-#	 -	If they don't guess correctly after 3 tries, print that the Player lost and the game is over. Also let them know what the `secret_number` was.
-#
-# Make sure to add helpful comments to your code to document what each section does.
-# 
-# Remember to cast input from the Player into the appropriate data type.
-#
-###############################################################################
+#========================================#
+#                                        #
+# Back-End Web Development - Homework #1 #
+# Secret number game                     #
+#                                        #
+# Name: Piroon Tangnavarad               #
+#                                        #
+#========================================#
+
+
+#=========#
+# globals #
+#=========#
+
+$g_secret_number = 7
+$g_author = "Piroon Tangnavarad"
+$g_num_tries = 3
+
+
+#=========#
+# methods #
+#=========#
+
+# This method prints the game's welcome message
+def doWelcome 
+	puts "Hi! This is #{$g_author}'s secret number game!"
+
+        player_name = getUsersName
+	puts "Hi #{player_name}! Welcome, and good luck!"
+        
+	puts "The rules are simple, you have #{$g_num_tries} tries to guess what the secret number is." \
+          << " Hint: the secret number is a number between 1-10!"
+	puts "Let the secret number game begin!"
+	puts
+	
+	return player_name
+end
+
+
+#This method ask for user's name, greets them and returns the name
+def getUsersName
+	puts "What is your name?"
+	name = gets.chomp
+	puts
+
+	return name
+end
+
+
+#This method ask for user's guess, and return the guess
+def getUsersGuess (num_guess)
+	puts "What is your guess? (Number of tries you have left: #{num_guess})"
+	guess = gets.chomp.to_i
+	puts
+
+	return guess
+end
+
+
+#This method validates the guess with the secret number
+def validateGuess (num)
+	if num == $g_secret_number
+		correct = true
+	elsif num < $g_secret_number
+		correct = false
+		puts "I'm sorry, your guess was too low please try again."
+	else
+		correct = false
+		puts "I'm sorry, your guess was too high please try again."
+	end
+
+	return correct
+end
+
+
+#======#
+# main #
+#======#
+
+player_name = doWelcome
+count = $g_num_tries
+win = false
+
+while count > 0
+	guess_num = getUsersGuess(count)
+	correct = validateGuess(guess_num)
+        if correct == true
+		count = 0
+		win = true
+	else
+		count -= 1
+	end
+end
+
+if win == true
+	puts "Congratulations #{player_name}, you won the game!"
+else
+	puts "I'm sorry #{player_name}, you ran out of tries. The secret number was #{$g_secret_number}" 
+end
 

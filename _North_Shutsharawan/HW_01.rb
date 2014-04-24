@@ -1,3 +1,86 @@
+def welcome
+	puts "Welcome to North's Secret Number game!"
+end
+# We define what welcome does.
+
+welcome
+puts "What is your name?"
+name = gets.chomp
+puts 
+# gets retrieves user input.
+# gets.chomp cuts the ENTER or \n input when the user presses enter
+
+puts "Hello #{name}. It's great to meet you!"
+puts
+puts "The rules for North's Secret Number game is quite simple. 
+You have three chances to guess the correct number between 1 and 10."
+
+number = rand(1..10)
+num_guesses = 0
+# If you called rand(1..10), it would generate a number from 1 - 10 inluding 10. 
+# If you called rand)1...10), it would generate a number from 1 - 10 not including 10.
+
+# .to_s changes a string to a number
+1.times do
+  puts "What is your guess?"
+  guess = gets.chomp.to_i
+  num_guesses += 1
+
+  unless guess == number
+    message = if guess > number
+                print "Too high. You have two more chances."
+              else
+                print "Too low. You have two more chances."
+              end
+    puts message
+  else
+    puts "You got it! Congratulations #{name}!"
+    puts "It took you #{num_guesses} guesse(s)."
+    exit
+  end
+end
+# 1.times loops the conditional logic 1 time. If you did 2.times it will loop 2 times. 
+
+1.times do
+  puts "What is your guess?"
+  guess = gets.chomp.to_i
+  num_guesses += 1
+
+  unless guess == number
+    message = if guess > number
+                print "Too high. You have one more chance."
+              else
+                print "Too low. You have one more chance."
+              end
+    puts message
+  else
+    puts "You got it! Congratulations #{name}!"
+    puts "It took you #{num_guesses} guesse(s)."
+    exit
+  end
+end
+
+1.times do
+  puts "What is your last guess?"
+  guess = gets.chomp.to_i
+  num_guesses += 1
+
+  unless guess == number
+    message = if guess > number
+                print "Whoops! You lost. GAME OVER!."
+                puts "The secret number was #{number}."
+              else
+                print "Whoops! You lost. GAME OVER!."
+                puts "The secret number was #{number}."
+              end
+    puts message
+  else
+    puts "You got it! Congratulations #{name}!"
+    puts "It took you #{num_guesses} guesse(s)."
+    exit
+  end
+end	
+
 ###############################################################################
 #
 # Back-End Web Development - Homework #1

@@ -36,3 +36,98 @@
 #
 ###############################################################################
 
+# Styling
+
+$styling = "****************************************************"
+
+# Method for the greeting and capturing user's name
+
+def greeting
+
+	# Creating the greeting variable
+	greeting = "#$styling\nWelcome to the Secret Number Game. Made by Gwan Yip\n#$styling"
+	
+	# Printing the greeting variable
+	puts "#{greeting}"
+	
+	# Asking for the User's name
+	puts "What is your name?"
+	
+	# Setting the user_name variable with the user's name
+	user_name = gets.chomp
+	
+	# Printing the greeting witht the user's name
+	puts
+	puts "#$styling\nHi #{user_name}\n\nYou have 3 guesses to correctly identify the Secret\nNumber between 1 and 10. Every time you guess incorrectly you'll get a\nhint to help you figure out the correct number.\nBut remember you only have 3 guesses.\n\nGood luck!!\n#$styling"
+
+end
+
+# Methodd for the game engine
+
+def guess
+
+	# Hard coding the correct number and setting the number of attempts per game
+	correct_number = 7
+	attempts = 3
+	
+	# Establishing a loop to correspond with the maximum amount of attempts a user gets per game
+	while attempts != 0 do
+
+		puts "What is your guess?"
+		# Setting the user's guess as the user_guess variable
+		
+		user_guess = gets.chomp
+
+		# Using a conditional to check if the user's guess is correct
+		if user_guess.to_i == correct_number
+
+			# This is the message if a user correctly guesses the number and exits the program
+			3.times do
+				puts "#$styling"
+			end
+			puts "************* Congrats, you're amazing *************"
+			3.times do
+				puts "#$styling"
+			end
+			exit
+
+		# These are the messages with a hint if a user does not correctly guess the number
+		elsif user_guess.to_i > correct_number
+			puts "#$styling\n************** Your number is too BIG **************"
+		else puts "#$styling\n************* Your number is too SMALL *************"
+
+		end
+
+		# Deducting one go from the number of attempts a users has if they incorrectly guess the number
+		attempts -= 1
+
+		# A conditional to check if a user has any more guesses left
+		if attempts != 0
+			
+			puts "#$styling\nYou have #{attempts} more guesses, enter a another number"
+			
+			# This is the message printed when a user has no more guesses left
+			else
+				puts "#$styling"
+				puts
+				puts "I'm sorry, you suck. You have no more guesses left."
+				puts
+
+				3.times do
+				puts "#$styling"
+				end
+				puts "************* The correct answer was #{correct_number} *************"
+				3.times do
+				puts "#$styling"
+				end
+	 			exit
+	 	end
+	end
+end
+
+# Calling Methods
+
+greeting()
+guess()
+
+

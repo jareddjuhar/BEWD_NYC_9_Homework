@@ -36,3 +36,85 @@
 #
 ###############################################################################
 
+
+#### This introduction defines a welcome message and greeting for the user
+def welcome_message
+  puts "Welcome to the Secret Number game!\nCreated by Tyler Houle"
+  puts  
+end
+
+def greeting
+  puts "What is your name?"
+  player_name = gets.capitalize.chomp
+  puts "Hi #{player_name}!"  
+end
+
+#### This section defines the objective and rules for the game
+def rules
+  puts 
+  puts "OBJECTIVE: Guess the secret number!"
+  puts
+  puts "RULES:\nThe secret number is between 1 and 10.\nYou will have 3 chances to correctly guess it.\nIf you guess correctly during your three tries, you win and the game is over.\nIf you fail to guess correctly during your three tries, you lose and the game is over."
+  puts
+end
+
+#### Here is the secret number. It will be randomly generated each game between 1 and 10.
+secret_number = rand(10)
+
+#### Takes care of appropriate pluralization
+def guess_count(count)
+  if count == 1
+    "#{count} guess"
+  else
+    "#{count} guess#{"es"}"
+  end
+end
+
+#### Verification method to check if the user guessed correctly
+def verify(secret_number, count)
+  guess = gets.to_i
+  if guess > secret_number
+    puts
+    if count == 1
+      puts "Sorry! Too high. You lose."
+      puts "The secret number was #{secret_number}. Game Over"
+    else
+      puts "Sorry! Too high."
+    end
+  elsif guess < secret_number
+    puts
+    if count == 1
+      puts "Sorry! Too low. You lose."
+      puts "The secret number was #{secret_number}. Game Over"
+    else
+      puts "Sorry! Too low."
+    end
+  else 
+    puts
+    congrats 
+  end
+end
+
+#### Congratulations if the user guesses correctly
+def congrats
+  puts "Congratulations! You guessed the secret number!"
+  puts "Game Over." 
+  abort
+end
+
+
+####### This section pulls everything together for the user.
+welcome_message
+greeting
+rules
+
+3.downto(2) do |count|
+  puts
+  puts "You have #{guess_count(count)} remaining. What is your guess?"
+  verify(secret_number, count)
+end
+
+puts
+puts "You have #{guess_count(1)} remaining. What is your guess?"
+verify(secret_number, 1)
+

@@ -1,3 +1,5 @@
 darrell simmons
 
-drell.me
+Yesterday was our first official BEWD class at General Assembly. Not wasting any time, we jumped right into the terminal. After a brief orientation to bash, we paired up and did a lab that required us to create directories, navigate to directories and create files all within the command line.
+
+Git was next, we learned how to initialize a git repository in our local directory. We then added files to be tracked. Then we made our first commit! We later learned how to link to github, make push/pull request, and set up the upstream and origin paths.

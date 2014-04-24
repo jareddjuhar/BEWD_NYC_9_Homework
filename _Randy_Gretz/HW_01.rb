@@ -36,3 +36,81 @@
 #
 ###############################################################################
 
+secret_number = 6
+
+puts "Welcome to extra super very secret number game!"
+puts "~~~~~~~~~~~~~~~~~~ created by ~~~~~~~~~~~~~~~~~" 
+puts "~~~~~~~~~~~~~~~~~~ Randy Gretz ~~~~~~~~~~~~~~~~"
+puts "\nWhat's your name?"
+# set variable to player's entry
+player_name = gets.strip
+puts "\nHi, #{player_name}!  You have 3 tries to guess a number between 1 and 10"
+puts "\nEnter your first guess:"
+# set variable for player's guess input, remove spacing, and convert to integer
+guess = gets.strip.to_i
+# make comparison between the guess and the answer
+if guess > secret_number
+	puts "\nToo high!"
+	# set variable to make game continue
+	game = 1
+elsif guess < secret_number
+	puts "\nToo low!"
+	# set variable to make game continue
+	game = 1
+else
+	puts "\nBINGO! What are you, some kind of mind reader?"
+	puts "\n<<<<<<<<<<<<<<<<<<< WINNER >>>>>>>>>>>>>>>>>>>"
+	# set variable to make game end
+	game = 0
+end
+# Allow user to continue guessing based on outcome/variable response from above
+if game == 1
+	then
+		puts "\nYou've got 2 more tries! Enter your second guess:"
+		# set variable for player's guess input, remove spacing, and convert to integer
+		guess = gets.strip.to_i
+		# make comparison between the guess and the answer
+		if guess > secret_number
+			puts "\nToo high!"
+			# set variable to make game continue
+			game = 1
+		elsif guess < secret_number
+			puts "\nToo low!"
+			# set variable to make game continue
+			game = 1
+		else
+			puts "\nBINGO! It only took you 2 tries!"
+			puts "\n<<<<<<<<<<<< WINNER >>>>>>>>>>>>"
+			# set variable to make game end
+			game = 0
+		end
+end			
+# Allow user to continue guessing based on outcome/variable response from above
+if game == 1
+	then
+		puts "\nYou've got 1 more try! Enter your last guess:"
+		# set variable for player's guess input, remove spacing, and convert to integer
+		guess = gets.strip.to_i
+		# make comparison between the guess and the answer
+		if guess > secret_number
+			puts "\nToo high!"
+		elsif guess < secret_number
+			puts "\nToo low! Better luck next time"
+			puts "\n<<<<<<<<<<<<<<< GAME OVER >>>>>>>>>>>>>>>"
+		else
+			puts "\nBINGO! Third time's the charm"
+			puts "\n<<<<<<<<<<< WINNER >>>>>>>>>>>"
+		end
+# I'm not going to tell them the answer, it's fixed rather than randomly generated so telling them would ruin it!		
+end	
+
+
+
+
+
+
+
+
+
+
+
